@@ -64,9 +64,6 @@ cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 cnoremap <C-U> <C-E><C-U>
 
-" Use sudo to save the current file.
-:command WW w !sudo tee % >/dev/null
-
 " Stupid shift mistakes.
 :command W w
 :command Q q
@@ -118,19 +115,9 @@ inoremap <Tab> <C-R>=TabOrComplete()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Highlighting
 
-" Programming
-highl Comment gui=italic guifg=#d0a4ef ctermfg=lightMagenta
-highl Identifier guifg=#30619f ctermfg=darkCyan
-highl Function guifg=#30619f ctermfg=darkCyan
-highl Statement guifg=#ab7e45 ctermfg=brown
-highl String guifg=#d87b77 ctermfg=red
-highl Constant guifg=#ff9595 ctermfg=lightRed
-
-" Spelling
-highl SpellBad ctermbg=White ctermfg=Red
-highl SpellCap ctermbg=White ctermfg=DarkBlue
-highl SpellRare ctermbg=White ctermfg=Brown
-highl SpellLocal ctermbg=White ctermfg=DarkCyan
+syntax enable
+set background=light
+colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Restore the cursor when we can.
@@ -142,3 +129,16 @@ function! RestoreCursor()
     endif
 endfunction
 autocmd BufWinEnter * call RestoreCursor()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" My Customizations
+
+set path=~/Code/**
+
+" Reread configuration of Vim if .vimrc is saved {{{
+augroup VimConfig
+  au!
+  autocmd BufWritePost ~/.vimrc       so ~/.vimrc
+  autocmd BufWritePost vimrc          so ~/.vimrc
+augroup END
+" }}}
