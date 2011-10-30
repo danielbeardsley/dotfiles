@@ -13,13 +13,18 @@ export PS1="▎\[\033[32m\]\u\[\033[1;36m\]@\H \[\033[0;35m\]\w\[\033[0m\] ▶  
 # User specific aliases and functions
 gfindf () { files="${1}"; find -P . -name "$files" -a ! -wholename '*/.*' ; }
 
+git_delete_branch () {
+   branch="${1}"
+   git branch -d --merged master $branch && git push github :$branch
+}
+
 function git_prune_branches {
   current_branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
   if [ "$current_branch" != "master" ]; then
     echo "WARNING: You are on branch $current_branch, NOT master."
   fi
     echo "Fetching merged branches..."
-  git remote prune origin
+  git remote prune github
   remote_branches=$(git branch -r --merged | grep -v '/master$' | grep -v "/$current_branch$")
   local_branches=$(git branch --merged | grep -v 'master$' | grep -v "$current_branch$")
   if [ -z "$remote_branches" ] && [ -z "$local_branches" ]; then
@@ -36,9 +41,9 @@ function git_prune_branches {
     echo
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
       # Remove remote branches
-      git push origin `git branch -r --merged | grep -v '/master$' | grep -v "/$current_branch$" | sed 's/origin\//:/g' | tr -d '\n'`
+      git push origin `git branch -r --merged | grep -v '/master$' | grep -v "/$current_branch$" | sed 's/github\//:/g' | tr -d '\n'`
       # Remove local branches
-      git branch -d `git branch --merged | grep -v 'master$' | grep -v "$current_branch$" | sed 's/origin\///g' | tr -d '\n'`
+      git branch -d `git branch --merged | grep -v 'master$' | grep -v "$current_branch$" | sed 's/github\///g' | tr -d '\n'`
     else
       echo "No branches removed."
     fi
