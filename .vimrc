@@ -117,6 +117,8 @@ inoremap <Tab> <C-R>=TabOrComplete()<CR>
 
 syntax enable
 set background=light
+" This should automatically be determined from the terminal type...
+set t_Co=16
 colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -142,3 +144,9 @@ augroup VimConfig
   autocmd BufWritePost vimrc          so ~/.vimrc
 augroup END
 " }}}
+
+" Create simple toggles for line numbers, paste mode, and word wrap.
+:nnoremap <C-N><C-N> :set invnumber<CR>
+:nnoremap <C-p><C-p> :set invpaste<CR>
+:nnoremap <C-w><C-w> :set invwrap<CR>
+
