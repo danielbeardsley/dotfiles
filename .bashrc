@@ -6,11 +6,11 @@ if [ -f /etc/bashrc ]; then
 fi
 
 export GFIND_EXCLUDE="3P:Deprecated"
-#
-#export PS1=\[\033[34m\]\u\[\033[37m\]@\[\033[35m\]\H \[\033[32m\]\t \[\033[35m\]\w\[\033[0m\] ➤
-export PS1="▎\[\033[32m\]\u\[\033[1;36m\]@\H \[\033[0;35m\]\w\[\033[0m\] ▶  "
+export PS1="▊ \[\033[32m\]\u \[\033[37m\]\A \[\033[0;35m\]\w\[\033[0m\] ▶  "
 
-# User specific aliases and functions
+source .bash_ifixit
+
+alias diffg="git diff --no-index"
 gfindf () { files="${1}"; find -P . -name "$files" -a ! -wholename '*/.*' ; }
 
 git_delete_branch () {
