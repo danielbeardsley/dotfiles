@@ -23,7 +23,7 @@ set nohls                 " Don't highlight all regex matches.
 set nowrap                " Don't soft wrap.
 set number                " Display line numbers.
 set ruler                 " Display row, column and % of document.
-set scrolloff=10          " Keep min of 10 lines above/below cursor.
+set scrolloff=6           " Keep min of 6 lines above/below cursor.
 set shiftwidth=3          " >> and << shift 3 spaces.
 set showcmd               " Show partial commands in the status line.
 set showmatch             " Show matching () {} etc..
@@ -38,7 +38,7 @@ set wildmode=longest,list " Tab completion works like bash.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set some configuration variables.
 
-let loaded_matchparen=1   " Don't do automatic bracket highlighting.
+let loaded_matchparen=0   " do automatic bracket highlighting.
 let mapleader=","         " Use , instead of \ for the map leader.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -85,13 +85,6 @@ noremap <Leader>h :set hlsearch! hlsearch?<CR>
 
 " Open a scratch buffer.
 noremap <Leader>s :Scratch<CR>
-
-" Execute an :lcd to the directory of the file being edited.
-function LcdToCurrent()
-    let dir = expand("%:h")
-    execute "lcd " . dir
-endfunction
-noremap <Leader>cd :call LcdToCurrent()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Insert mode cartography
@@ -145,8 +138,40 @@ augroup VimConfig
 augroup END
 " }}}
 
+" Since I hardly ever need to type two j's this is fast.
+imap jj <Esc>
+
+" auto-insert second braces and parynthesis
+inoremap {<CR> {<CR>}<Esc>O
+inoremap ({<CR> ({<CR>});<Esc>O
+inoremap <<<<CR> <<<EOT<CR>EOT;<Esc>O<C-TAB><C-TAB><C-TAB>
+set cpoptions+=$ "show dollar sign at end of text to be changed
+
+"Highlights lines that are greater than 80 columns
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength '\%80v.\+'
+set colorcolumn=80
+
 " Create simple toggles for line numbers, paste mode, and word wrap.
 :nnoremap <C-N><C-N> :set invnumber<CR>
 :nnoremap <C-p><C-p> :set invpaste<CR>
 :nnoremap <C-w><C-w> :set invwrap<CR>
+
+" Call 'svn blame' on the current file and grab the output for the current line
+" plus the surrounding context. Display the result via echo and redraw the
+" screen after input.
+function GitBlame(linesOfContext)
+   let pos = line(".")
+   let text = system("git blame " . expand("%:p"))
+   let tempName = tempname()
+
+   exec "redir! > " . tempName
+   silent echon text
+   redir END
+   execute "botr " . (a:linesOfContext * 2 + 1) . "split " . tempName
+   exec pos
+   norm zz
+   redraw!
+endfunction
+noremap <C-B> :call GitBlame(6)<CR>
 
