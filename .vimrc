@@ -1,7 +1,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Author: Shawn Tice, with lots of help from the internet.
 
-set guioptions=aMm       " No toolbar in the gui; must be first in .vimrc.
+set guioptions=am        " No toolbar in the gui; must be first in .vimrc.
+set guifont=Consolas:h9
+" encoding settings for gVim
+set encoding=utf-8
+set fileencoding=utf-8
 
 set nocompatible         " No compatibility with vi.
 filetype on              " Recognize syntax by file extension.
@@ -105,11 +109,15 @@ function TabOrComplete()
 endfunction
 inoremap <Tab> <C-R>=TabOrComplete()<CR>
 
+" Make C-s write the buffer and return to insert mode when applicable
+inoremap <C-s> <C-O>:w<CR>
+nnoremap <C-s> :w<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Highlighting
 
 syntax enable
-set background=light
+set background=dark
 " This should automatically be determined from the terminal type...
 set t_Co=16
 colorscheme solarized
@@ -134,18 +142,23 @@ set path=~/Code/**
 augroup VimConfig
   au!
   autocmd BufWritePost ~/.vimrc       so ~/.vimrc
+  autocmd BufWritePost _vimrc         so ~/_vimrc
   autocmd BufWritePost vimrc          so ~/.vimrc
 augroup END
 " }}}
 
 " Since I hardly ever need to type two j's this is fast.
 imap jj <Esc>
+imap kk <Esc>
 
 " auto-insert second braces and parynthesis
 inoremap {<CR> {<CR>}<Esc>O
 inoremap ({<CR> ({<CR>});<Esc>O
 inoremap <<<<CR> <<<EOT<CR>EOT;<Esc>O<C-TAB><C-TAB><C-TAB>
 set cpoptions+=$ "show dollar sign at end of text to be changed
+
+" Allow easy toggling of spaces / tabs mode
+nnoremap <C-t><C-t> :set invexpandtab<CR>
 
 "Highlights lines that are greater than 80 columns
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
