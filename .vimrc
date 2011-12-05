@@ -147,9 +147,15 @@ augroup VimConfig
 augroup END
 " }}}
 
-" Since I hardly ever need to type two j's this is fast.
-imap jj <Esc>
-imap kk <Esc>
+" Since I hardly ever need to type jk this is fast.
+imap jk <Esc>
+imap kj <Esc>
+
+" Use hjkl in insert mode
+imap <C-h> <Left>
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-l> <Right>
 
 " auto-insert second braces and parynthesis
 inoremap {<CR> {<CR>}<Esc>O
@@ -166,9 +172,15 @@ nnoremap <C-t><C-t> :set invexpandtab<CR>
 set colorcolumn=80
 
 " Create simple toggles for line numbers, paste mode, and word wrap.
-:nnoremap <C-N><C-N> :set invnumber<CR>
-:nnoremap <C-p><C-p> :set invpaste<CR>
-:nnoremap <C-w><C-w> :set invwrap<CR>
+nnoremap <C-N><C-N> :set invnumber<CR>
+nnoremap <C-p><C-p> :set invpaste<CR>
+nnoremap <C-w><C-w> :set invwrap<CR>
+
+" Use C-hjkl in to change windows
+nnoremap <C-h> <C-w><Left>
+nnoremap <C-j> <C-w><Down>
+nnoremap <C-k> <C-w><Up>
+nnoremap <C-l> <C-w><Right>
 
 " Call 'svn blame' on the current file and grab the output for the current line
 " plus the surrounding context. Display the result via echo and redraw the
