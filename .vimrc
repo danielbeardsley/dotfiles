@@ -1,3 +1,6 @@
+" Pathogen vim plugin loading - https://github.com/tpope/vim-pathogen
+call pathogen#infect()
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Author: Shawn Tice, with lots of help from the internet.
 
