@@ -201,5 +201,11 @@ function GitBlame(linesOfContext)
    norm zz
    redraw!
 endfunction
-noremap <C-B> :call GitBlame(6)<CR>
+noremap <Leader><C-B> :call GitBlame(6)<CR>
 
+"==========================================
+" vim-indent-guides : 
+"hi IndentGuidesOdd  ctermbg=black
+"hi IndentGuidesEven ctermbg=darkgrey
+"hi IndentGuidesOdd  ctermbg=white
+"hi IndentGuidesEven ctermbg=lightgrey
