@@ -8,7 +8,10 @@ fi
 export GFIND_EXCLUDE="3P:Deprecated"
 export PS1="▊ \[\033[32m\]\u \[\033[37m\]\A \[\033[0;35m\]\w\[\033[0m\] ▶  "
 
-source .bash_ifixit
+source ~/.bash_ifixit
+
+# allow <C-s> to pass through the terminal instead of stopping it
+stty stop undef
 
 alias diffg="git diff --no-index"
 gfindf () { files="${1}"; find -P . -name "$files" -a ! -wholename '*/.*' ; }
