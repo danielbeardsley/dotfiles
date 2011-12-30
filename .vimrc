@@ -173,11 +173,6 @@ set cpoptions+=$ "show dollar sign at end of text to be changed
 " Allow easy toggling of spaces / tabs mode
 nnoremap <C-t><C-t> :set invexpandtab<CR>
 
-"Highlights lines that are greater than 80 columns
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength '\%80v.\+'
-set colorcolumn=80
-
 " Create simple toggles for line numbers, paste mode, and word wrap.
 nnoremap <C-N><C-N> :set invnumber<CR>
 nnoremap <C-p><C-p> :set invpaste<CR>
