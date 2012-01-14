@@ -8,5 +8,8 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	last = log --no-pager -20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	staged = diff --cached
+	ap = add -p
+	cop = checkout -p
+	unap = reset HEAD -p
 [core]
 	excludesfile = ~/.gitignore_global
