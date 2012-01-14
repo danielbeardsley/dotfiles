@@ -209,3 +209,9 @@ noremap <Leader><C-B> :call GitBlame(6)<CR>
 "hi IndentGuidesEven ctermbg=darkgrey
 "hi IndentGuidesOdd  ctermbg=white
 "hi IndentGuidesEven ctermbg=lightgrey
+
+"==========================================
+" vim-powerline :
+let g:Powerline_theme='solarized'
+" show status line even where there is only one window
+set laststatus=2
