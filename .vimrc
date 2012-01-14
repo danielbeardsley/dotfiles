@@ -17,7 +17,7 @@ filetype plugin on       " Allow plugins to be loaded by file type.
 syntax on                " Syntax highlighting.
 
 set autowrite             " Write before executing the 'make' command.
-set background=light      " Background light, so foreground not bold.
+set background=dark       " Background light, so foreground not bold.
 set backspace=2           " Allow <BS> to go past last insert.
 set expandtab             " Expand tabs with spaces.
 set nofoldenable          " Disable folds; toggle with zi.
@@ -120,10 +120,14 @@ nnoremap <C-s> :w<CR>
 " Highlighting
 
 syntax enable
-set background=dark
 " This should automatically be determined from the terminal type...
 set t_Co=16
 colorscheme solarized
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic options : https://github.com/scrooloose/syntastic/
+
+let g:syntastic_check_on_open=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Restore the cursor when we can.
@@ -202,6 +206,11 @@ function GitBlame(linesOfContext)
    redraw!
 endfunction
 noremap <Leader><C-B> :call GitBlame(6)<CR>
+
+"==========================================
+" Powerline: https://github.com/Lokaltog/vim-powerline
+let g:Powerline_theme="solarized"
+let g:Powerline_symbols="compatible"
 
 "==========================================
 " vim-indent-guides : 
