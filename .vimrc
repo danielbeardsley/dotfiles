@@ -208,9 +208,11 @@ endfunction
 noremap <Leader><C-B> :call GitBlame(6)<CR>
 
 "==========================================
-" Powerline: https://github.com/Lokaltog/vim-powerline
+" vim-powerline: https://github.com/Lokaltog/vim-powerline
 let g:Powerline_theme="solarized"
 let g:Powerline_symbols="compatible"
+" show status line even where there is only one window
+set laststatus=2
 
 "==========================================
 " vim-indent-guides : 
@@ -219,8 +221,3 @@ let g:Powerline_symbols="compatible"
 "hi IndentGuidesOdd  ctermbg=white
 "hi IndentGuidesEven ctermbg=lightgrey
 
-"==========================================
-" vim-powerline :
-let g:Powerline_theme='solarized'
-" show status line even where there is only one window
-set laststatus=2
