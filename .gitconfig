@@ -1,3 +1,5 @@
+[core]
+   pager = less -FRSXn
 [user]
 	name = Daniel Beardsley
 	email = daniel@ifixit.com
@@ -7,9 +9,16 @@
 	unadd = reset HEAD
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	last = log --no-pager -20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	staged = diff --cached
+	ds = diff --cached
+   # add to index hunk by hunk
 	ap = add -p
+   # revert modifications hunk by hun
 	cop = checkout -p
+   # unadd from index hunk by hun
 	unap = reset HEAD -p
+   # git log with full diff and lots of context
+   logg = log -U10
 [core]
 	excludesfile = ~/.gitignore_global
+[push]
+	default = current
