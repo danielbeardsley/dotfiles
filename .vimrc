@@ -221,3 +221,9 @@ set laststatus=2
 "hi IndentGuidesOdd  ctermbg=white
 "hi IndentGuidesEven ctermbg=lightgrey
 
+"==========================================
+" Mouse Options
+
+" Enable mouse scrolling in all modes!
+set mouse=a
+
