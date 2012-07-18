@@ -200,6 +200,10 @@ nnoremap <C-O> zO
 nnoremap <C-O><C-O> zR
 set foldmethod=indent
 
+
+" Open file for class name under cursor
+nnoremap <C-o> yiw:find <C-R>".php<CR>
+
 "==========================================
 " vim-powerline: https://github.com/Lokaltog/vim-powerline
 let g:Powerline_theme="solarized"
