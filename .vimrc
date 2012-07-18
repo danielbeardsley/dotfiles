@@ -189,6 +189,9 @@ nnoremap <C-j> <C-w><Down>
 nnoremap <C-k> <C-w><Up>
 nnoremap <C-l> <C-w><Right>
 
+" Split windows with sanity
+nnoremap <leader>v <C-w>v<C-w>l
+nnoremap <C-w>s <C-w>s<C-w>j
 
 "==========================================
 " vim-powerline: https://github.com/Lokaltog/vim-powerline
