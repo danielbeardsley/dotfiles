@@ -193,6 +193,13 @@ nnoremap <C-l> <C-w><Right>
 nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <C-w>s <C-w>s<C-w>j
 
+" Folding stuff
+nnoremap <C-o> zo
+nnoremap <C-c> zc
+nnoremap <C-O> zO
+nnoremap <C-O><C-O> zR
+set foldmethod=indent
+
 "==========================================
 " vim-powerline: https://github.com/Lokaltog/vim-powerline
 let g:Powerline_theme="solarized"
