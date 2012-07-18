@@ -226,4 +226,9 @@ set laststatus=2
 
 " Enable mouse scrolling in all modes!
 set mouse=a
+" Set scrolling to be single-line
+:map <MouseDown> <C-Y>
+:map <S-MouseDown> <C-U>
+:map <MouseUp> <C-E>
+:map <S-MouseUp> <C-D>
 
