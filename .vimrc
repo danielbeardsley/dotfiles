@@ -189,23 +189,6 @@ nnoremap <C-j> <C-w><Down>
 nnoremap <C-k> <C-w><Up>
 nnoremap <C-l> <C-w><Right>
 
-" Call 'svn blame' on the current file and grab the output for the current line
-" plus the surrounding context. Display the result via echo and redraw the
-" screen after input.
-function GitBlame(linesOfContext)
-   let pos = line(".")
-   let text = system("git blame " . expand("%:p"))
-   let tempName = tempname()
-
-   exec "redir! > " . tempName
-   silent echon text
-   redir END
-   execute "botr " . (a:linesOfContext * 2 + 1) . "split " . tempName
-   exec pos
-   norm zz
-   redraw!
-endfunction
-noremap <Leader><C-B> :call GitBlame(6)<CR>
 
 "==========================================
 " vim-powerline: https://github.com/Lokaltog/vim-powerline
