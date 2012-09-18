@@ -28,3 +28,4 @@ git_delete_branch () {
    git branch -d --merged master $branch && git push origin :$branch
 }
 
+eval `dircolors ~/.dircolors.ansi-dark`
