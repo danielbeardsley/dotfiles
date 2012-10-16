@@ -143,7 +143,7 @@ autocmd BufWinEnter * call RestoreCursor()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My Customizations
 
-set path=~/Code/**
+set path=.,,~/Code/**
 
 " Reread configuration of Vim if .vimrc is saved {{{
 augroup VimConfig
