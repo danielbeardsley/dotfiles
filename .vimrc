@@ -201,9 +201,6 @@ nnoremap <C-O><C-O> zR
 set foldmethod=indent
 
 
-" Open file for class name under cursor
-nnoremap <C-o> yiw:find <C-R>".php<CR>
-
 "==========================================
 " vim-powerline: https://github.com/Lokaltog/vim-powerline
 let g:Powerline_theme="solarized"
@@ -223,9 +220,30 @@ set laststatus=2
 
 " Enable mouse scrolling in all modes!
 set mouse=a
-" Set scrolling to be single-line
-:map <MouseDown> <C-Y>
-:map <S-MouseDown> <C-U>
-:map <MouseUp> <C-E>
-:map <S-MouseUp> <C-D>
 
+"==========================================
+" From: https://gist.github.com/3882918
+" Author: Marc Zych
+nnoremap <silent> <C-o> :call FindFile()<CR>
+
+function! FindFile()
+   " Get the word under cursor.
+   let cursorWord = expand("<cword>")
+   " Get the current file name and keep only the extension.
+   let currentFile = expand("%")
+   let extPos = stridx(currentFile, ".")
+
+   " Append an extension only if the current file has an extension.
+   if extPos != -1
+      let extension = strpart(currentFile, extPos)
+   else
+      let extension = ""
+   endif
+
+   " Construct the file name.
+   let fileName = cursorWord.extension
+
+   " Open the file in the current buffer.
+   execute "find ".fileName
+endfunction
+"==========================================
