@@ -30,3 +30,5 @@ git_delete_branch () {
 }
 
 eval `dircolors ~/.dircolors.ansi-dark`
+
+source ~/.bash_alias_completion
