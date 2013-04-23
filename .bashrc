@@ -25,6 +25,7 @@ alias gem="~/bin/gem"
 alias gl="git lg -30"
 alias glg="git lg --all -30"
 alias ll='ls -lh --color'
+alias fs='feature switch'
 # Always enable UTF8 support
 alias tmux='tmux -u'
 
