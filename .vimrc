@@ -234,7 +234,7 @@ function! FindFile()
    let cursorWord = expand("<cword>")
    " Get the current file name and keep only the extension.
    let currentFile = expand("%")
-   let extPos = stridx(currentFile, ".")
+   let extPos = strridx(currentFile, ".")
 
    " Append an extension only if the current file has an extension.
    if extPos != -1
