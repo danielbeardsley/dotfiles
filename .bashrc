@@ -1,17 +1,5 @@
 # .bashrc
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
-
-# tmux doesn't like utf8 characters in the prompt, as it adds a tab at the end
-# of the line.
-if [[ $TERM == "screen" ]]; then
-   export PS1="\[\033[32m\]\u \[\033[37m\]\A \[\033[0;35m\]\w\[\033[0m\] > "
-else
-   export PS1="▊ \[\033[32m\]\u \[\033[37m\]\A \[\033[0;35m\]\w\[\033[0m\] ▶  "
-fi
 
 source ~/.bash_ifixit
 
@@ -39,4 +27,7 @@ git_delete_branch () {
 
 eval `dircolors ~/.dircolors.ansi-dark`
 
-source ~/.bash_alias_completion
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
