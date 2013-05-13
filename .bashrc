@@ -35,3 +35,5 @@ eval `dircolors ~/.dircolors.ansi-dark`
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
+
+export PS1="▊ \[\033[32m\]\u \[\033[37m\]\A \[\033[0;35m\]\w\[\033[0m\] ▶  "
