@@ -14,6 +14,10 @@ alias gl="git lg -30"
 alias glg="git lg --all -30"
 alias ll='ls -lh --color'
 alias fs='feature switch'
+# cause I never remember which uses -s and -t
+alias ta='tmux attach -t'
+alias tn='tmux new -s'
+alias tl='tmux ls'
 # Always enable UTF8 support
 alias tmux='tmux -u'
 
