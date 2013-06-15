@@ -8,8 +8,6 @@ stty stop undef
 
 # Diff, using git's processing, format, and coloring, it rocks
 alias diffg="git diff --no-index"
-alias ruby="~/bin/ruby"
-alias gem="~/bin/gem"
 alias gl="git lg -30"
 alias glg="git lg --all -30"
 alias ll='ls -lh --color'
