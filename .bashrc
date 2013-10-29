@@ -34,4 +34,19 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-export PS1="▊ \[\033[32m\]\u \[\033[37m\]\A \[\033[0;35m\]\w\[\033[0m\] ▶  "
+####
+# Bash Prompt
+####
+RED="\[\e[31m\]"
+GRE="\[\e[32m\]"
+YEL="\[\e[33m\]"
+BLU="\[\e[34m\]"
+PUR="\[\e[35m\]"
+CYA="\[\e[36m\]"
+WHI="\[\e[37m\]"
+NUL="\[\e[0m\]"
+
+# Show non-zero exit-code as a red "E:{code}"
+EXIT="FOO=\$?; [ ! \$FOO = 0 ] && echo -ne \"${RED}E:\$FOO${NUL}\""
+
+export PS1="${GRE}\u ${WHI}\t${YEL}\$(__git_ps1 \" (%s)\") ${PUR}\w${NUL} \`$EXIT\`\n▶  "
