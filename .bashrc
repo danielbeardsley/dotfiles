@@ -4,7 +4,9 @@
 source ~/.bash_ifixit
 
 # allow <C-s> to pass through the terminal instead of stopping it
-stty stop undef
+if [ -t 1 ]; then
+   stty stop undef
+fi
 
 # Diff, using git's processing, format, and coloring, it rocks
 alias diffg="git diff --no-index"
