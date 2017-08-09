@@ -23,7 +23,11 @@
 	excludesfile = ~/.gitignore_global
 [push]
 	default = current
+[github]
+	user = danielbeardsley
 [rerere]
 	enabled = true
 [diff]
 	algorithm = patience
+[rebase]
+	autoStash = 1
