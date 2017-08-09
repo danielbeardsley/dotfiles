@@ -65,7 +65,7 @@ let mapleader=","         " Use , instead of \ for the map leader.
 " o: Insert comment leader after hitting 'o' or 'O' in command mode.
 " n: Auto-format lists, wrapping to text *after* the list bullet char.
 " l: Don't auto-wrap if a line is already longer than textwidth.
-set formatoptions+=ronl
+set formatoptions+=ron
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command-line cartography
