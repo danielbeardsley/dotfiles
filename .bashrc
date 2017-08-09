@@ -52,3 +52,6 @@ NUL="\[\e[0m\]"
 EXIT="FOO=\$?; [ ! \$FOO = 0 ] && echo -ne \"${RED}E:\$FOO${NUL}\""
 
 export PS1="${GRE}\u ${WHI}\t${YEL}\$(__git_ps1 \" (%s)\") ${PUR}\w${NUL} \`$EXIT\`\n▶  "
+
+export PAGER="less -r"
+
