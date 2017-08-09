@@ -66,6 +66,7 @@ let mapleader=","         " Use , instead of \ for the map leader.
 " n: Auto-format lists, wrapping to text *after* the list bullet char.
 " l: Don't auto-wrap if a line is already longer than textwidth.
 set formatoptions+=ron
+set nojoinspaces          " Don't Condense '.  ' -> '. ' whne joining lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command-line cartography
