@@ -42,6 +42,12 @@ set textwidth=79          " Hard wrap at 79 characters.
 set virtualedit=block     " Allow the cursor to go where there's no char.
 set wildmode=longest,list " Tab completion works like bash.
 
+" Live dangerously
+set nobackup
+set nowritebackup
+set noswapfile
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set some configuration variables.
 
