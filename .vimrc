@@ -41,7 +41,12 @@ set tabstop=3             " <Tab> move three characters.
 set textwidth=79          " Hard wrap at 79 characters.
 set virtualedit=block     " Allow the cursor to go where there's no char.
 set wildmode=longest,list " Tab completion works like bash.
-set wildignore=*.log,.git,node_modules
+
+set wildignore+=*.log
+set wildignore+=Logs/**
+set wildignore+=**/.git/**
+set wildignore+=**/node_modules/**
+set wildignore+=**/vendor/**
 
 " Live dangerously
 set nobackup
