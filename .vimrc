@@ -85,8 +85,8 @@ cnoremap <Esc>f <S-Right>
 cnoremap <C-U> <C-E><C-U>
 
 " Stupid shift mistakes.
-:command W w
-:command Q q
+:command! W w
+:command! Q q
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command mode cartography
@@ -118,7 +118,7 @@ set complete-=i
 
 " Insert <Tab> or complete identifier if the cursor is after a keyword
 " character.
-function TabOrComplete()
+function! TabOrComplete()
     let col = col('.')-1
     if !col || getline('.')[col-1] !~ '\k'
         return "\<tab>"
