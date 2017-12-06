@@ -29,5 +29,6 @@
 	enabled = true
 [diff]
 	algorithm = patience
+	noprefix = true
 [rebase]
 	autoStash = 1
