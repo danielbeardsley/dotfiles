@@ -17,7 +17,8 @@ filetype plugin on       " Allow plugins to be loaded by file type.
 syntax on                " Syntax highlighting.
 
 set autowrite             " Write before executing the 'make' command.
-set background=dark       " Background light, so foreground not bold.
+set background=dark       " Background dark, so foreground not bold.
+" set background=light      " Background light, so foreground not bold.
 set backspace=2           " Allow <BS> to go past last insert.
 set expandtab             " Expand tabs with spaces.
 set nofoldenable          " Disable folds; toggle with zi.
@@ -71,7 +72,7 @@ let mapleader=","         " Use , instead of \ for the map leader.
 " n: Auto-format lists, wrapping to text *after* the list bullet char.
 " l: Don't auto-wrap if a line is already longer than textwidth.
 set formatoptions+=ron
-set nojoinspaces          " Don't Condense '.  ' -> '. ' whne joining lines
+set nojoinspaces          " Condense '.  ' -> '. ' whne joining lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command-line cartography
@@ -111,10 +112,7 @@ noremap <Leader>s :Scratch<CR>
 
 " Set up dictionary completion.
 set dictionary+=~/.vim/dictionary/english-freq
-set complete+=k
-
-" Don't scan included files, it's slow!!!!
-set complete-=i
+set complete=.,w,b,k,t
 
 " Insert <Tab> or complete identifier if the cursor is after a keyword
 " character.
@@ -138,7 +136,13 @@ nnoremap <C-s> :w<CR>
 syntax enable
 " This should automatically be determined from the terminal type...
 set t_Co=16
+let g:solarized_contrast="high"
 colorscheme solarized
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Background setting
+nnoremap <leader><C-d> :set background=dark<CR>
+nnoremap <leader><C-l> :set background=light<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic options : https://github.com/scrooloose/syntastic/
@@ -241,6 +245,7 @@ set mouse=a
 " From: https://gist.github.com/3882918
 " Author: Marc Zych
 nnoremap <silent> <C-o> :call FindFile()<CR>
+nnoremap <silent> <C-q> :Lose
 
 function! FindFile()
    " Get the word under cursor.
@@ -260,7 +265,7 @@ function! FindFile()
    let fileName = cursorWord.extension
 
    " Open the file in the current buffer.
-   execute "find ".fileName
+   execute "Lose /".fileName
 endfunction
 "==========================================
 "
@@ -269,3 +274,24 @@ endfunction
 set keywordprg=pman
 "==========================================
 
+"==========================================
+" Fugitive
+" Open the quickfix window with the result of "grep" commands
+" (i.e. git grep)
+" autocmd QuickFixCmdPost *grep* cwindow
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax Options
+
+" Remove '-' from list of word chars. This means that if X is your cursor, 
+" $bl(X)ah->thing() then '*" will search for $blah instead of $blah-
+set isk-=-
+
+"==========================================
+" Debugging plugin vi DBGPavim
+
+let g:dbgPavimPort = 9000
+let g:dbgPavimBreakAtEntry = 0
+
+" git grep word under the cursor
+nnoremap <silent> <C-g> :Ggrep <C-R><C-W><CR>
