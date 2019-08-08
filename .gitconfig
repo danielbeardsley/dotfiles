@@ -19,6 +19,8 @@
 	unap = reset HEAD -p
    # git log with full diff and lots of context
    logg = log -U10
+   co = checkout
+   cash = !git add . && git stash
 [core]
 	excludesfile = ~/.gitignore_global
 [push]
