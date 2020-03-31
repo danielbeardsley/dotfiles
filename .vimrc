@@ -295,3 +295,8 @@ let g:dbgPavimBreakAtEntry = 0
 
 " git grep word under the cursor
 nnoremap <silent> <C-g> :Ggrep <C-R><C-W><CR>
+
+" fzf fuzzy finder
+set rtp+=/usr/share/nvim/site/plugin/fzf.vim
+nnoremap <Leader>f :FZF<CR>
+

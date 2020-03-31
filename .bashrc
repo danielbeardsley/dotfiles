@@ -20,6 +20,11 @@ alias tn='tmux new -s'
 alias tl='tmux ls'
 # Always enable UTF8 support
 alias tmux='tmux -u'
+alias gl="git ls-files"
+alias paths='echo "$PATH" | sed "s/:/\n/g"'
+
+alias gc="git commit -v"
+alias b="git unmerged | head"
 
 gfindf () { files="${1}"; find -P . -name "$files" -a ! -wholename '*/.*' ; }
 
@@ -51,7 +56,10 @@ NUL="\[\e[0m\]"
 # Show non-zero exit-code as a red "E:{code}"
 EXIT="FOO=\$?; [ ! \$FOO = 0 ] && echo -ne \"${RED}E:\$FOO${NUL}\""
 
-export PS1="${GRE}\u ${WHI}\t${YEL}\$(__git_ps1 \" (%s)\") ${PUR}\w${NUL} \`$EXIT\`\n▶  "
+export PS1="${GRE}\u ${WHI}\t${YEL}\$(__git_ps1 \" (%s)\") ${PUR}\w${NUL} \`$EXIT\`\n${NUL}▶  "
 
 export PAGER="less -r"
 
+FZF_GIT_FIND_CMD='rg --files . 2>/dev/null'
+FZF_FIND_CMD='find . \( -name \.git -o  -name node_modules -o -name vendor \) -prune -o -type f -print 2>/dev/null | sed "s#^./##"'
+export FZF_DEFAULT_COMMAND="$FZF_GIT_FIND_CMD || $FZF_FIND_CMD"
