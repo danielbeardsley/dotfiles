@@ -42,6 +42,8 @@ set tabstop=3             " <Tab> move three characters.
 set textwidth=79          " Hard wrap at 79 characters.
 set virtualedit=block     " Allow the cursor to go where there's no char.
 set wildmode=longest,list " Tab completion works like bash.
+set complete=.,w,b,t      " Tab completion settings
+set spelllang=en_us       " This is Umurica!
 
 set wildignore+=*.log
 set wildignore+=Logs/**
@@ -193,11 +195,6 @@ set cpoptions+=$ "show dollar sign at end of text to be changed
 " Allow easy toggling of spaces / tabs mode
 nnoremap <C-t><C-t> :set invexpandtab<CR>
 
-"Highlights lines that are greater than 80 columns
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength '\%80v.\+'
-set colorcolumn=80
-
 " Create simple toggles for line numbers, paste mode, and word wrap.
 nnoremap <C-N><C-N> :set invnumber<CR>
 nnoremap <C-p><C-p> :set invpaste<CR>
@@ -214,10 +211,6 @@ nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <C-w>s <C-w>s<C-w>j
 
 " Folding stuff
-nnoremap <C-o> zo
-nnoremap <C-c> zc
-nnoremap <C-O> zO
-nnoremap <C-O><C-O> zR
 set foldmethod=indent
 
 
