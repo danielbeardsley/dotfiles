@@ -64,6 +64,8 @@ FZF_GIT_FIND_CMD='rg --files . 2>/dev/null'
 FZF_FIND_CMD='find . \( -name \.git -o  -name node_modules -o -name vendor \) -prune -o -type f -print 2>/dev/null | sed "s#^./##"'
 export FZF_DEFAULT_COMMAND="$FZF_GIT_FIND_CMD || $FZF_FIND_CMD"
 
+export EDITOR=vim
+
 # Graphical log of ping times to a host
 function pinglog() {
    domain="$1"
