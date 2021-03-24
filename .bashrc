@@ -79,3 +79,39 @@ function pinglog() {
    fflush()
    }'
 }
+
+# Graphical log of ping times to a host
+function pinglog-fast() {
+   domain="$1"
+   while true; do
+      sudo ping -i 0.1 -c 1 "$domain" |
+      awk 'BEGIN { FS="=" } {
+      if ($4 == "")
+         next
+      printf "%-13s", $4;
+      size=log(50+$4)/log(1.04)-log(50)/log(1.04);
+      for(c=0;c<size;c++)
+         printf "=";
+      printf "\n";
+      fflush()
+      }'
+      # constant CPU % report
+      (cat /proc/stat; sleep 0.1; cat /proc/stat) |
+         grep --line-buffered "^cpu " |
+         awk '{
+            t=$1+$2+$3+$4+$5+$6;
+            s = $5;
+            per = 100*(1-(s - s1)/(t-t1));
+            if (t1) {
+               printf "%-13s", per;
+               size=per
+               printf "\033[34m";
+               for(c=0;c<size;c++)
+                  printf "=";
+               printf "\n\033[0m";
+            }
+            s1=s;
+            t1=t
+         }'
+   done
+}
