@@ -69,9 +69,9 @@ export EDITOR=vim
 # Graphical log of ping times to a host
 function pinglog() {
    domain="$1"
-   ping "$domain" |
+   ping -4 -i 1 -W 4 -O "$domain" |
    awk 'BEGIN { FS="=" } {
-   printf "%-13s", $4;
+   printf "%-13s", ($4 ~ /[0-9.]+/ ? $4 : "fail: " $0);
    size=log(50+$4)/log(1.04)-log(50)/log(1.04);
    for(c=0;c<size;c++)
       printf "=";
