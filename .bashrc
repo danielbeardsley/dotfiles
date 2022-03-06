@@ -83,11 +83,11 @@ function pinglog() {
 function pinglog-fast() {
    domain="$1"
    while true; do
-      sudo ping -i 0.1 -c 1 "$domain" |
+      ping -c 1 "$domain" |
       awk 'BEGIN { FS="=" } {
       if ($4 == "")
          next
-      printf "%-13s", $4;
+      printf "%-13s", ($4 ~ /[0-9]+/ ? $4 : "\n");
       size=log(50+$4)/log(1.04)-log(50)/log(1.04);
       for(c=0;c<size;c++)
          printf "=";
