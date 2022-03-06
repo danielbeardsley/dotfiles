@@ -11,6 +11,7 @@ fi
 # Diff, using git's processing, format, and coloring, it rocks
 alias diffg="git diff --no-index"
 alias gl="git lg -30"
+alias gg="git grep"
 alias glg="git lg --all -30"
 alias ll='ls -lh --color'
 alias fs='feature switch'
@@ -33,8 +34,6 @@ git_delete_branch () {
    branch="${1}"
    git branch -d --merged master $branch && git push origin :$branch
 }
-
-eval `dircolors ~/.dircolors.ansi-dark`
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
